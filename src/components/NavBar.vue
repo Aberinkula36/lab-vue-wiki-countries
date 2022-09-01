@@ -1,6 +1,7 @@
 <template>
   <div class="menu">
     <h1>LAB - WikiCountries</h1>
+    <router-link to="/ejemplo">Router Link</router-link>
   </div>
 </template>
 

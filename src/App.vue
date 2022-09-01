@@ -1,20 +1,35 @@
 <template>
-  <div class="app">
+  <div className="app"> 
+  <!-- class instead of className-->
     <NavBar/>
+    <div class="countriesContainer">
+      <CountriesList :countriesList="countries" />
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <script>
-  import logo from './logo.svg';
+  /*import logo from './logo.svg';*/
   import NavBar from './components/NavBar.vue';
+  import CountriesList from './components/CountriesList.vue';
 
   export default {
-    data: () => ({
-      logo
-    }),
-    components: {
-      NavBar,
+    data () {
+      return {
+        countries: []
+      }
     },
+    components: {
+      /*logo,*/
+      NavBar,
+      CountriesList,
+    },
+    async created() {
+      fetch('./public/countries.json')
+      .then(res => res.json())
+      .then(data => this.countries = data)
+    }
   }
 </script>
 
@@ -26,6 +41,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.countriesContainer {
+  display: flex;
 }
 
 code {
