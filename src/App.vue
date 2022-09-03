@@ -1,6 +1,5 @@
 <template>
   <div className="app"> 
-  <!-- class instead of className-->
     <NavBar/>
     <div class="countriesContainer">
       <CountriesList :countriesList="countries" />
